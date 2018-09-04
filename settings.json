@@ -1,0 +1,15 @@
+{
+    "editor.tabSize": 2,
+    "terminal.integrated.shell.windows": "C:\\windows\\System32\\bash.exe",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editor.enablePreview": false,
+    "workbench.list.openMode": "doubleClick",
+    "window.zoomLevel": 0,
+    "explorer.confirmDelete": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line"
+}

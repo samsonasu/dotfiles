@@ -1,31 +1,32 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# Path to your oh-my-zsh installation.
+export ZSH="/home/bsamson/.oh-my-zsh"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+ZSH_THEME="robbyrussell"
 
+# Which plugins would you like to load?
+plugins=(git ssh-agent docker)
 
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-fpath=(~/.zsh $fpath)
+source $ZSH/oh-my-zsh.sh
 
-autoload -Uz compinit && compinit
+export EDITOR=/usr/bin/vim
+export PAGER=""
 
-
-if [ $ITERM_SESSION_ID ]; then
-  precmd() {
-    echo -ne "\033]0;${PWD##*/}\007"
-  }
+# pyenv/rvm
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
 fi
 
-# Load version control information
-autoload -Uz vcs_info
-precmd() { vcs_info }
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:/usr/local/lib/node_modules/yarn/bin"
 
-# Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats '[%b]'
- 
-# Set up the prompt (with git branch name)
-setopt PROMPT_SUBST
-PROMPT='%n:${PWD/#$HOME/~} [${vcs_info_msg_0_}] %# '
+# annoying zsh feature where it CDs for you for no reason
+unsetopt AUTO_CD 
 
-PROMPT='%~${vcs_info_msg_0_}%# '
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+

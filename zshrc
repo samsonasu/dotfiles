@@ -1,4 +1,3 @@
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -19,14 +18,16 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-
 ###### Language support
 
 ## RVM
 export PATH="$PATH:$HOME/.rvm/bin"
 
 ## Java
-export JAVA_HOME=$(/usr/libexec/java_home)
+# OSX
+if [ -e /usr/libexec/java_home ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 ## Node
 export NVM_DIR="$HOME/.nvm"
@@ -47,5 +48,5 @@ export PAGER=cat
 if [ -f ~/.zshlocal ]; then
     source ~/.zshlocal
 else
-    print "404: ~/.zshlocals not found."
+    # print "404: ~/.zshlocals not found."
 fi

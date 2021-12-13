@@ -1,3 +1,5 @@
+####### ZSH core setup ######
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -10,18 +12,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# OH-MY-ZSH
+## OH-MY-ZSH
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git gitfast)
 source $ZSH/oh-my-zsh.sh
 
-
-
-
-###### Language support
+###### Language support ######
 
 ## RVM
 export PATH="$PATH:$HOME/.rvm/bin"
+alias rake='noglob rake'
 
 ## Java
 # OSX
@@ -33,6 +33,12 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## Python
+# if which pyenv-virtualenv-init > /dev/null; then echo 'pyenv'; eval "$(pyenv virtualenv-init -)"; fi
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 ###### Path modifcation
 
@@ -48,5 +54,5 @@ export PAGER=cat
 if [ -f ~/.zshlocal ]; then
     source ~/.zshlocal
 else
-    # print "404: ~/.zshlocals not found."
+    # print "404: ~/.zshlocal not found."
 fi

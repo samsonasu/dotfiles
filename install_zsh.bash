@@ -41,3 +41,8 @@ read -p "Install nvm?" yn
 case $yn in
     [Yy]* ) curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 esac
+
+read -p "Install tpm?" yn
+case $yn in
+    [Yy]* ) mkdir -p ~/.tmux/plugins; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+esac

@@ -36,7 +36,7 @@ export NVM_DIR="$HOME/.nvm"
 
 ## Python
 # if which pyenv-virtualenv-init > /dev/null; then echo 'pyenv'; eval "$(pyenv virtualenv-init -)"; fi
-
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 

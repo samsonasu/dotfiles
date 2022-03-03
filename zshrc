@@ -14,25 +14,29 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 ## OH-MY-ZSH
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git gitfast)
+export NVM_AUTO_USE=true
+
+# ssh-agent
+zstyle :omz:plugins:ssh-agent lazy true
+
+# Initialize all plugins
+plugins=(git gitfast ssh-agent zsh-nvm)
 source $ZSH/oh-my-zsh.sh
 
-###### Language support ######
+###### Language support
 
 ## RVM
 export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# Fix square brackets for rake https://kinopyo.com/en/blog/escape-square-bracket-by-default-in-zsh
 alias rake='noglob rake'
+
 
 ## Java
 # OSX
 if [ -e /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
-
-## Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## Python
 # if which pyenv-virtualenv-init > /dev/null; then echo 'pyenv'; eval "$(pyenv virtualenv-init -)"; fi
@@ -44,6 +48,12 @@ eval "$(pyenv virtualenv-init -)"
 
 # put ~/bin in front of the path
 export PATH=$HOME/bin:$PATH
+
+# Clone this repo to your homedirectory to get the bins
+if [ -e $HOME/dotfiles/bin ]; then
+  export PATH=$HOME/dotfiles/bin:$PATH
+fi
+
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 ###### Random settings
@@ -56,3 +66,6 @@ if [ -f ~/.zshlocal ]; then
 else
     # print "404: ~/.zshlocal not found."
 fi
+
+# trick rvm, nvm, etc into doing their thing when a new terminal opens in a project directory
+cd .

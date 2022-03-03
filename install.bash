@@ -1,12 +1,19 @@
-#!/bin/bash 
+#!/bin/bash
 # Install ZSH first
+
+which zsh > /dev/null 2>&1
+
+if [ $? -ne 0 ] ; then
+    echo "Please make sure zsh is installed via your package manager first"
+    exit 1
+fi
 
 # oh-my-zsh
 read -p "Install oh-my-zsh?" yn
 case $yn in
-    [Yy]* ) 
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ;;
+    [Yy]* )
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        ;;
 esac
 
 read -p "Install powerlevel 10k?" yn
@@ -19,12 +26,13 @@ case $yn in
 # Install pyenv
 read -p "Install Pyenv?" yn
 case $yn in
-    [Yy]* ) 
-    if [[ $OSTYPE == 'darwin'* ]]; then
-        brew install pyenv pyenv-virtualenv
-    else     
-        curl https://pyenv.run | bash
-    fi
+    [Yy]* )
+        if [[ $OSTYPE == 'darwin'* ]]; then
+            brew install pyenv pyenv-virtualenv
+        else
+            curl https://pyenv.run | bash
+        fi
+        ;;
 esac
 
 # Install rvm
@@ -39,5 +47,7 @@ esac
 # Install nvm
 read -p "Install nvm?" yn
 case $yn in
-    [Yy]* ) curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    [Yy]* )
+        git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
+        ;;
 esac

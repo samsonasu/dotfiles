@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "Finding servers in $1"
+
+curl --silent "https://api.nordvpn.com/v1/servers?limit=16384"  | jq --raw-output ".[] | select(.locations[].country.city.name == \"$1\") | .hostname"
+
+echo -n "What server? "
+read server
+curl -O https://downloads.nordcdn.com/configs/files/ovpn_legacy/servers/$server.nordvpn.com.udp1194.ovpn 
+sudo nmcli connection import type openvpn file $server.nordvpn.com.udp1194.ovpn
+#rm $server.nordvpn.com.udp1194.ovpn
+ 

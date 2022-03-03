@@ -1,0 +1,4 @@
+# https://testssl.sh/
+# Put files from here in /opt/testssl
+#!/bin/bash
+TESTSSL_INSTALL_DIR=/opt/testssl /opt/testssl/testssl.sh $@

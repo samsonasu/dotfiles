@@ -51,3 +51,8 @@ case $yn in
         git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
         ;;
 esac
+
+read -p "Install tpm?" yn
+case $yn in
+    [Yy]* ) mkdir -p ~/.tmux/plugins; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+esac

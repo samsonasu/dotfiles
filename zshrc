@@ -17,7 +17,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export NVM_AUTO_USE=true
 
 # ssh-agent
-zstyle :omz:plugins:ssh-agent lazy true
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
 # Initialize all plugins
 plugins=(git gitfast ssh-agent zsh-nvm)
@@ -44,6 +46,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+## Android
+export PATH="$PATH:/opt/android-sdk/platform-tools"
+
 ###### Path modifcation
 
 # put ~/bin in front of the path
@@ -69,3 +74,4 @@ fi
 
 # trick rvm, nvm, etc into doing their thing when a new terminal opens in a project directory
 cd .
+

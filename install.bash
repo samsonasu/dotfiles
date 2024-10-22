@@ -52,7 +52,8 @@ case $yn in
         ;;
 esac
 
-read -p "Install tpm?" yn
-case $yn in
-    [Yy]* ) mkdir -p ~/.tmux/plugins; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-esac
+echo "Helpful symlinks include: "
+echo "      ln -s dotfiles/zshrc .zshrc"
+echo "      ln -s dotfiles/p10k.zsh .p10k.zsh"
+echo "      ln -s dotfiles/alacritty.yml ~/.alacritty.yml"
+echo "      ln -s dotfiles/tmux.conf ~/.tmux.conf"
